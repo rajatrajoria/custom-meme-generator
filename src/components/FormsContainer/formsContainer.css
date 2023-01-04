@@ -1,0 +1,27 @@
+.forms-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+.text-designer{
+    display: flex;
+}
+.meme-image-link{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.meme-image-link input{
+    width: 55%;
+    padding: 10px;
+    text-align: center;
+}
+#img-width{
+    width: 5%;
+    min-width: 40px;
+}
+#img-height{
+    width: 5%;
+    min-width: 40px;
+}
