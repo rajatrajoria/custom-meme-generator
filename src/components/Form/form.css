@@ -1,7 +1,61 @@
-.number-input{
+.design-container{
+    /* border: 1px solid rgb(44, 46, 46); */
+    padding: 5px 0px 5px 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+fieldset{
+    border: 1px solid rgb(85, 84, 84);
+}
+
+legend {
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
+  }
+
+form{
+    width: 375px;
+}
+
+.text-input{
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.font-size-input{
     width: 30px;
     text-align: center;
-    margin-right: 10px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.font-color-input{
+    margin-top: 5px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.tblr-input{
+    width: 30px;
+    text-align: center;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.input-type-checkbox{
+    margin-bottom: 5px;
+}
+
+#boldlabel{
+    margin-right: 20px;
+}
+
+.shadowblur-input{
+    width: 30px;
+    text-align: center;
+    margin-right: 20px;
+    margin-bottom: 5px;
 }
 
 label{
@@ -12,8 +66,4 @@ label{
 .font-family-input{
     text-align: left;
     width: 90px
-}
-
-fieldset{
-    border: 1px solid rgb(85, 84, 84)
 }

@@ -5,39 +5,55 @@ import "./formsContainer.css"
 export default function FormsContainer(props)
 {
 
+    const formEle = props.info.map(item=>{
+        return <Form info={props.info} handle={props.handle} id={item.id}/>
+    })
+
+    function addMoreBoxes(){
+        props.addMore();
+    }
+
     return(
         <div className="forms-container">
             <div className="text-designer">
-                <Form info={props.info} handle={props.handle} id="1"/>
-                <Form info={props.info} handle={props.handle} id="2"/>
+                {formEle}
+            </div>
+            <div className="addMoreFormButton">
+                <button onClick={addMoreBoxes}>Add Box</button>
             </div>
             <div className="meme-image-link">
-                <label htmlFor="memeurl">URL :</label>
-                <input 
-                    type="text" 
-                    placeholder="Enter Meme image URL here" 
-                    name="image" 
-                    id="memeurl"
-                    onChange={props.handleMeme}
-                />
-                <input 
-                    type="number" 
-                    placeholder="Width" 
-                    name="width" 
-                    defaultValue={500}
-                    min={5}
-                    onChange={props.handleMeme}
-                    id="img-width"
-                />
-                <input 
-                    type="number" 
-                    placeholder="Height" 
-                    name="height" 
-                    defaultValue={300}
-                    min={5}
-                    onChange={props.handleMeme}
-                    id="img-height"
-                />
+                <div className="meme-image-link-url">
+                    <label htmlFor="memeurl">URL: </label>
+                    <input 
+                        type="text" 
+                        placeholder="Enter Meme image URL here" 
+                        name="image" 
+                        id="memeurl"
+                        onChange={props.handleMeme}
+                    />
+                </div>
+                <div className="meme-image-link-dimensions">
+                    <label htmlFor="img-width">Image Width: </label>
+                    <input 
+                        type="number" 
+                        placeholder="Width" 
+                        name="width" 
+                        defaultValue={500}
+                        min={5}
+                        onChange={props.handleMeme}
+                        id="img-width"
+                    />
+                    <label htmlFor="img-height">Image Height: </label>
+                    <input 
+                        type="number" 
+                        placeholder="Height" 
+                        name="height" 
+                        defaultValue={300}
+                        min={5}
+                        onChange={props.handleMeme}
+                        id="img-height"
+                    />
+                </div>
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 export default
-{
-    text1:
+[
     {
+        id: 0,
         content: "",
         style: 
         {
@@ -20,8 +20,8 @@ export default
             shadowBlur: "0px"
         }
     }, 
-    text2:
     {
+        id: 1,
         content: "",
         style:
         {
@@ -40,4 +40,4 @@ export default
             shadowBlur: "0px"
         }
     }
-}
+]

@@ -1,27 +1,64 @@
 .forms-container{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: center;
+    gap: 10px;
     padding-bottom: 20px;
 }
 .text-designer{
     display: flex;
+    /****/flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: auto;
 }
+
+.text-designer::-webkit-scrollbar {
+    display: none;
+}
+
+.addMoreFormButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.addMoreFormButton > button{
+    padding: 15px;
+    font-size: 16px;
+}
+
+
 .meme-image-link{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
 }
+
+.meme-image-link-url{
+    width: 55%;
+    padding: 10px;
+    text-align: center;
+}
+
 .meme-image-link input{
     width: 55%;
     padding: 10px;
     text-align: center;
 }
+
+.meme-image-link-dimensions{
+    display: flex;
+    align-items: center;
+}
+
 #img-width{
     width: 5%;
     min-width: 40px;
+    margin-right: 30px;
+    margin-left: 5px;
 }
 #img-height{
     width: 5%;
     min-width: 40px;
+    margin-left: 5px;
 }

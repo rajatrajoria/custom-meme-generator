@@ -12,35 +12,36 @@ export default function Input(props)
     return(
         <div className="design-container">
             <form>
-                <fieldset>
-                    <label htmlFor={"text"+props.id+"content"}>Enter text {props.id} : </label>
+                <fieldset><legend>Box {props.id+1}</legend>
+                    <label htmlFor={props.id+"content"}>Enter text {props.id} : </label>
                     <input
                         type="text"
+                        className="text-input"
                         placeholder={"Text #"+props.id}
-                        name={"text"+props.id+" content"}
+                        name={props.id+" content"}
                         onChange={handleChange}
-                        value={props.info["text"+props.id].content}
-                        id={"text"+props.id+"content"}
+                        value={props.info[props.id].content}
+                        id={props.id+"content"}
                     />
                     <br/>
 
-                    <label htmlFor={"text"+props.id+"fontSize"}>Font Size : </label>
+                    <label htmlFor={props.id+"fontSize"}>Font Size : </label>
                     <input
                         type="number"
-                        className="number-input"
+                        className="font-size-input"
                         placeholder="Font Size"
                         min={5}
                         defaultValue={20}
-                        id={"text"+props.id+"fontSize"}
-                        name={"text"+props.id+" style fontSize"}
-                        value={props.info["text"+props.id].fontSize}
+                        id={props.id+"fontSize"}
+                        name={props.id+" style fontSize"}
+                        value={props.info[props.id].fontSize}
                         onChange={handleChange}
                     />
 
-                    <label htmlFor={"text"+props.id+"fontFamily"}>Font Style : </label>
+                    <label htmlFor={props.id+"fontFamily"}>Font Family : </label>
                     <select
-                        id={"text"+props.id+"fontFamily"}
-                        name={"text"+props.id+" style fontFamily"}
+                        id={props.id+"fontFamily"}
+                        name={props.id+" style fontFamily"}
                         onChange={handleChange}
                         className="font-family-input"
                     >   
@@ -61,14 +62,14 @@ export default function Input(props)
                     </select><br/>
 
 
-                    <label htmlFor={"text"+props.id+"color"}>Font-Color : </label>
-                    <input type="color" id={"text"+props.id+"color"} name={"text"+props.id+" style color"} value={props.info["text"+props.id].style.color} onChange={handleChange}></input>
+                    <label htmlFor={props.id+"color"}>Font-Color : </label>
+                    <input type="color" className="font-color-input" id={props.id+"color"} name={props.id+" style color"} value={props.info[props.id].style.color} onChange={handleChange}></input>
 
 
-                    <label htmlFor={"text"+props.id+"textAlign"}>Align : </label>
+                    <label htmlFor={props.id+"textAlign"}>Align : </label>
                     <select
-                        id={"text"+props.id+"textAlign"}
-                        name={"text"+props.id+" style textAlign"}
+                        id={props.id+"textAlign"}
+                        name={props.id+" style textAlign"}
                         onChange={handleChange}
                     >
                         <option value="left">Left</option>
@@ -77,87 +78,85 @@ export default function Input(props)
                     </select><br/>
 
 
-                    <label htmlFor={"text"+props.id+"top"}>T/D: </label>
+                    <label htmlFor={props.id+"top"}>T/D: </label>
                     <input
                         type="number"
                         step={3}
-                        className="number-input"
+                        className="tblr-input"
                         placeholder="Top"
                         min={0}
                         defaultValue={0}
-                        id={"text"+props.id+"top"}
-                        name={"text"+props.id+" style top"}
-                        value={props.info["text"+props.id].top}
+                        id={props.id+"top"}
+                        name={props.id+" style top"}
+                        value={props.info[props.id].top}
                         onChange={handleChange}
                     />
 
-                    <label htmlFor={"text"+props.id+"left"}> L/R: </label>
+                    <label htmlFor={props.id+"left"}> L/R: </label>
                     <input
                         type="number"
                         step={3}
-                        className="number-input"
+                        className="tblr-input"
                         placeholder="Left"
                         min={0}
                         defaultValue={0}
-                        id={"text"+props.id+"left"}
-                        name={"text"+props.id+" style left"}
-                        value={props.info["text"+props.id].left}
+                        id={props.id+"left"}
+                        name={props.id+" style left"}
+                        value={props.info[props.id].left}
                         onChange={handleChange}
                     />
 
-                    <label htmlFor={"text"+props.id+"left"}> Width: </label>
+                    <label htmlFor={props.id+"width"}> Width: </label>
                     <input
                         type="number"
                         step={3}
-                        className="number-input"
+                        className="tblr-input"
                         placeholder="Width"
                         min={0}
                         defaultValue={100}
-                        id={"text"+props.id+"width"}
-                        name={"text"+props.id+" style width"}
-                        value={props.info["text"+props.id].paraWidth}
+                        id={props.id+"width"}
+                        name={props.id+" style width"}
+                        value={props.info[props.id].paraWidth}
                         onChange={handleChange}
                         style={{textAlign:"left", width: "50px"}}
                     /><br/>
 
                     <input 
                         type="checkbox" 
-                        id="isBold" 
+                        id= {props.id + "isBold"}
                         className="input-type-checkbox"
-                        checked={props.info["text"+props.id].style.isBold}
+                        checked={props.info[props.id].style.isBold}
                         onChange={handleChange}
-                        name={"text"+props.id+" style fontWeight isBold"}
+                        name={props.id+" style fontWeight isBold"}
                     />
-                    <label htmlFor="isBold" style={{fontWeight: "bold"}}>BOLD</label>
+                    <label htmlFor={props.id + "isBold"} id="boldlabel" style={{fontWeight: "bold"}}>BOLD</label>
 
                     <input 
                         type="checkbox" 
-                        id="isItalic" 
+                        id= {props.id + "isItalic"}
                         className="input-type-checkbox"
-                        checked={props.info["text"+props.id].style.isItalic}
+                        checked={props.info[props.id].style.isItalic}
                         onChange={handleChange}
-                        name={"text"+props.id+" style fontStyle isItalic"}
+                        name={props.id+" style fontStyle isItalic"}
                     />
-                    <label htmlFor="isItalic" style={{fontStyle: "italic"}}>Italic</label><br/>
+                    <label htmlFor={props.id + "isItalic"} id="italiclabel" style={{fontStyle: "italic"}}>Italic</label><br/>
 
                     {/* Text Shadow Color and Text Shadow Blur Radius ==> Text Shadow*/}
-                    <label htmlFor={"text"+props.id+"textShadow"}> Blur Rad : </label>
+                    <label htmlFor={props.id+"shadowBlur"}> Blur Rad : </label>
                     <input
                         type="number"
-                        className="number-input"
+                        className="shadowblur-input"
                         placeholder="0"
                         min={0}
                         defaultValue={0}
-                        id={"text"+props.id+"shadowBlur"}
-                        name={"text"+props.id+" style shadowBlur"}
-                        value={props.info["text"+props.id].shadowBlur}
+                        id={props.id+"shadowBlur"}
+                        name={props.id+" style shadowBlur"}
+                        value={props.info[props.id].shadowBlur}
                         onChange={handleChange}
                     />
 
-                    <label htmlFor={"text"+props.id+"textShadow"}> Blur Color : </label>
-                    <input type="color" id={"text"+props.id+"shadowColor"} name={"text"+props.id+" style shadowColor"} value={props.info["text"+props.id].style.shadowColor} onChange={handleChange}></input>
-
-
+                    <label htmlFor={props.id+"shadowColor"}> Blur Color : </label>
+                    <input type="color" id={props.id+"shadowColor"} className="shadowcolor-input" name={props.id+" style shadowColor"} value={props.info[props.id].style.shadowColor} onChange={handleChange}></input>
                 </fieldset>
             </form>
         </div>

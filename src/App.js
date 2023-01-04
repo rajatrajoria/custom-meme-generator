@@ -11,7 +11,6 @@ function App()
   //State memeData is used for the image counterparts. Its dimensions as well.
   const [info, setInfo] = React.useState(formInfo);
   const [memeData, setMemeData] = React.useState(meme);  
-  console.log(Object.keys(info).length);
 
   function handleChange(name, value, type)
     {
@@ -58,7 +57,6 @@ function App()
   function handleMemeData(event)
   {
       const {name, value} = event.target;
-      console.log(name, value);
       if(name=="image")
       {
         setMemeData({
@@ -75,20 +73,52 @@ function App()
       }
   }
 
+  function addMore()
+  {
+    const obj =
+    {
+        id: 0,
+        content: "",
+        style: 
+        {
+            fontSize: "20px",
+            fontStyle: "",
+            color: "black",
+            top: "0px",
+            left: "0px",
+            fontWeight: "normal",
+            isBold: false,
+            isItalic: false,
+            width: "auto",
+            textAlign: "left",
+            textShadow: "none",
+            shadowColor: "black",
+            shadowBlur: "0px"
+        }
+    }
+    obj.id = info.length;
+	const copy = [...info];
+	copy.push(obj);
+	setInfo(copy)
+	console.log(info);
+  }
+
   const styles={height: memeData.height, width: memeData.width};
+
+  const paraEle = info.map(item=>{
+      return item.content && <p style={item.style}>{item.content}</p>
+  })
 
   return (
     <div className="App">
-		  <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData}/>
+		  <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore}/>
       <hr/>
       <div className="meme-display-container">
         <div className="meme-image" id="meme-image-id">
-          {info.text1.content && <p style={info.text1.style}>{info.text1.content}</p>}
-          {info.text2.content && <p style={info.text2.style}>{info.text2.content}</p>}
+          {paraEle}
           <img style={styles} src={memeData.image}/>
         </div>
         <div id="meme-save-button">
-          {/* <button onClick={doCapture}>Save Meme</button> */}
         </div>
       </div>
     </div>

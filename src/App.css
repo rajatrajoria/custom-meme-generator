@@ -27,3 +27,7 @@ p{
 button:hover{
     cursor: pointer;
 }
+
+.App{
+    /***/display: flex;
+}
