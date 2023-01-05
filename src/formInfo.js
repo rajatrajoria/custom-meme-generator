@@ -17,7 +17,9 @@ export default
             textAlign: "left",
             textShadow: "none",
             shadowColor: "black",
-            shadowBlur: "0px"
+            shadowBlur: "0px",
+            letterSpacing: "0px",
+            opacity: 1
         }
     } 
 ]

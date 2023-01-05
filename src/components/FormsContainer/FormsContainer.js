@@ -4,26 +4,31 @@ import "./formsContainer.css"
 
 export default function FormsContainer(props)
 {
-
+    //Mapping the total number of forms in the formsInfo.js file. The function delete and add will directly reflect to this js file upon their triggering.
     const formEle = props.info.map(item=>{
         return <Form info={props.info} handle={props.handle} id={item.id} handleDelete={props.handleDelete}/>
     })
 
+    //Triggered when more boxes are to be added. Reflects directly on the info present in the props field.
     function addMoreBoxes(){
         props.addMore();
     }
 
+    //Printing Section
     return(
         <div className="forms-container">
 
+            {/* Prints the mapped form elements. */}
             <div className="text-designer">
                 {formEle}
             </div>
 
+            {/* Add more boxes trigger point */}
             <div className="addMoreFormButton">
                 <button onClick={addMoreBoxes}>Add Box</button>
             </div>
 
+            {/* Taking the URL of the image concerned - Both random and the imported URL. */}
             <div className="meme-image-link">
                 <div className="meme-links">
                     <div className="meme-image-link-url">
@@ -38,6 +43,8 @@ export default function FormsContainer(props)
                     <span style={{fontStyle:"bold", fontSize: "20px"}}>or</span>
                     <button className="getRandomImage" onClick={props.getRandomMemeImage}>Random Meme</button>
                 </div>
+
+            {/* The dimensions of the image uploaded. */}
                 <div className="meme-image-link-dimensions">
                     <label htmlFor="img-width">Width: </label>
                     <input 

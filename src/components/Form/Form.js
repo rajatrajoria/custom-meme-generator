@@ -3,25 +3,28 @@ import "./form.css";
 
 export default function Input(props)
 {
-    //The function handleChange is triggered when any chnage is made to the React Form Component.
-    function handleChange(event)
-    {
+    //The function handleChange is triggered when any change is made to the React Form Component. The function is held in the upper components for sake of truthfulness.
+    function handleChange(event){
         props.handle(event.target.name, event.target.value, event.target.type);
     }
 
+    //This function is called when the delete button is pressed. Again handleDelete function has descended from the higher level components.
     function del(event){
         props.handleDelete(event.target.name);
     }
 
+    //This is basically the display section of the components. Contains the different components of the form inputs.
     return(
         <div className="design-container">
             <form>
                 <fieldset><legend>Box {props.id+1}</legend>
-                    <label htmlFor={props.id+"content"}>Enter text {props.id} : </label>
+
+                    {/* Text Box input */}
+                    <label htmlFor={props.id+"content"}>Enter text {props.id+1} : </label>
                     <input
                         type="text"
                         className="text-input"
-                        placeholder={"Text #"+props.id}
+                        placeholder={"Text #"+parseInt(props.id+1)}
                         name={props.id+" content"}
                         onChange={handleChange}
                         value={props.info[props.id].content}
@@ -29,6 +32,7 @@ export default function Input(props)
                     />
                     <br/>
 
+                    {/* Font Size input */}
                     <label htmlFor={props.id+"fontSize"}>Font Size : </label>
                     <input
                         type="number"
@@ -42,6 +46,7 @@ export default function Input(props)
                         onChange={handleChange}
                     />
 
+                    {/* Font Family input */}
                     <label htmlFor={props.id+"fontFamily"}>Font Family : </label>
                     <select
                         id={props.id+"fontFamily"}
@@ -66,10 +71,12 @@ export default function Input(props)
                     </select><br/>
 
 
+                    {/* Font Color Input */}
                     <label htmlFor={props.id+"color"}>Font-Color : </label>
                     <input type="color" className="font-color-input" id={props.id+"color"} name={props.id+" style color"} value={props.info[props.id].style.color} onChange={handleChange}></input>
 
 
+                    {/* Font Alignment Input */}
                     <label htmlFor={props.id+"textAlign"}>Align : </label>
                     <select
                         id={props.id+"textAlign"}
@@ -82,6 +89,7 @@ export default function Input(props)
                     </select><br/>
 
 
+                    {/* Top-Bottom input */}
                     <label htmlFor={props.id+"top"}>T/D: </label>
                     <input
                         type="number"
@@ -96,6 +104,8 @@ export default function Input(props)
                         onChange={handleChange}
                     />
 
+
+                    {/* Left Right Input */}
                     <label htmlFor={props.id+"left"}> L/R: </label>
                     <input
                         type="number"
@@ -110,6 +120,8 @@ export default function Input(props)
                         onChange={handleChange}
                     />
 
+
+                    {/* Width Input */}
                     <label htmlFor={props.id+"width"}> Width: </label>
                     <input
                         type="number"
@@ -125,6 +137,8 @@ export default function Input(props)
                         style={{textAlign:"left", width: "50px"}}
                     /><br/>
 
+
+                    {/* Bold input checkbox */}
                     <input 
                         type="checkbox" 
                         id= {props.id + "isBold"}
@@ -135,6 +149,8 @@ export default function Input(props)
                     />
                     <label htmlFor={props.id + "isBold"} id="boldlabel" style={{fontWeight: "bold"}}>BOLD</label>
 
+
+                    {/* Italic Checkbox */}
                     <input 
                         type="checkbox" 
                         id= {props.id + "isItalic"}
@@ -143,14 +159,34 @@ export default function Input(props)
                         onChange={handleChange}
                         name={props.id+" style fontStyle isItalic"}
                     />
-                    <label htmlFor={props.id + "isItalic"} id="italiclabel" style={{fontStyle: "italic"}}>Italic</label><br/>
+                    <label htmlFor={props.id + "isItalic"} id="italiclabel" style={{fontStyle: "italic"}}>Italic</label>
 
-                    {/* <div className="slidecontainer">
-                        <label htmlFor={props.id+"opacity"}>Opacity :</label>
-                        <input type="range" onChange={handleChange} classname="opacity-slider" min="0" max="1" name={props.id+" style opacity"} value="1" class="slider" id={props.id+"opacity"}></input><br/>
-                    </div> */}
 
-                    {/* Text Shadow Color and Text Shadow Blur Radius ==> Text Shadow*/}
+                    {/* Letter Spacing input */}
+                    <label htmlFor={props.id+"letterSpacing"} style={{marginLeft:"30px", marginBottom: "10px"}}>Spacing: </label>
+                    <input
+                        type="number"
+                        step={0.1}
+                        className="letter-spacing"
+                        placeholder="Spacing"
+                        min={0}
+                        max={20}
+                        defaultValue={0}
+                        id={props.id+"letterSpacing"}
+                        name={props.id+" style letterSpacing"}
+                        value={props.info[props.id].letterSpacing}
+                        onChange={handleChange}
+                        style={{textAlign:"left", width: "50px"}}
+                    /><br/>
+
+                    {/* Slide Ranger input */}
+                    <div className="slidecontainer">
+                        <label htmlFor={props.id+"opacity"} style={{marginRight:"5px"}}>Opacity: </label>
+                        <input type="range" onChange={handleChange} step={0.01} classname="opacity-slider" min={0} max={1} name={props.id+" style opacity"} defaultValue={1} value={props.info[props.id].opacity} class="slider" id={props.id+"opacity"}></input><br/>
+                    </div>
+
+
+                    {/* Text Shadow Color and Text Shadow Blur Radius ==> Text Shadow */}
                     <label htmlFor={props.id+"shadowBlur"}> Blur Rad : </label>
                     <input
                         type="number"
@@ -164,9 +200,11 @@ export default function Input(props)
                         onChange={handleChange}
                     />
 
+                    {/* Blur Color input type color */}
                     <label htmlFor={props.id+"shadowColor"}> Blur Color : </label>
                     <input type="color" id={props.id+"shadowColor"} className="shadowcolor-input" name={props.id+" style shadowColor"} value={props.info[props.id].style.shadowColor} onChange={handleChange}></input><br/>
 
+                    {/* Delete Button */}
                     <button type="button" name={props.id} onClick={del}>Delete</button>
                 </fieldset>
             </form>

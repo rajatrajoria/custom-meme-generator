@@ -9,30 +9,32 @@ import html2canvas from "html2canvas";
 
 function App() 
 {
-  //State info is used to track down the different input boxes and its data.
-  //State memeData is used for the image counterparts. Its dimensions as well.
-  const [info, setInfo] = React.useState(formInfo);
-  const [memeData, setMemeData] = React.useState(meme);
+	//State info is used to track down the different input boxes and its data.
+	//State memeData is used for the image information along with its dimension as well.
+	const [info, setInfo] = React.useState(formInfo);
+	const [memeData, setMemeData] = React.useState(meme);
 
-  const [allMemeData, setAllMemeData] = React.useState([]);  
-  React.useEffect(()=>{
-  	fetch("https://api.imgflip.com/get_memes")
-    	.then(res => res.json())
-        .then(data => setAllMemeData(data.data.memes))
-  },[])
+	//The allMemeData fetches and tracks the data receieved and stores it for further processing. useEffect is used to prevent React falling to the trap of the 'Out'side problems. ==> Infinte loop problem. 
+	const [allMemeData, setAllMemeData] = React.useState([]);  
+	React.useEffect(()=>{
+	fetch("https://api.imgflip.com/get_memes")
+		.then(res => res.json())
+		.then(data => setAllMemeData(data.data.memes))
+	},[])
 
-  function getRandomMemeImage() {
+	//This function finds a random integer and then uses it to the extract a random image from the API-derived data.
+	function getRandomMemeImage() {
 	const randomNumber = Math.floor(Math.random() * allMemeData.length)
 	const url = allMemeData[randomNumber].url
-	console.log(url);
 	setMemeData(prevMeme => ({
 		...prevMeme,
 		image: url
-	}))
-}
+	}))}
 
-  function handleChange(name, value, type)
+	//Most important function of the entire code. It handles the entire input and its associated fields. There are plenty of ifs and else's solely depending on the input types and props recieved form the lower components. 
+	function handleChange(name, value, type)
     {
+        console.log(name,value,type);
         let eventinfo = name.split(' ');
         var copy = JSON.parse(JSON.stringify(info));
         if(eventinfo.length==2)
@@ -44,132 +46,144 @@ function App()
         else
         {
             let loc = eventinfo[0], prop = eventinfo[2];
-            // console.log(name,value,type);
-            if(type=="number" && prop!="shadowBlur" && prop!="shadowBlur")
-              copy[loc].style[prop] = value + "px";
+            if(prop=="opacity")
+            {
+              	copy[loc].style[prop] = value;
+            }
+            else if(type=="number" && prop!="shadowBlur" && prop!="shadowBlur")
+              	copy[loc].style[prop] = value + "px";
             else if(type=="checkbox" && eventinfo[3]=="isBold")
             {
-              copy[loc].style[eventinfo[3]] = !info[loc].style[eventinfo[3]];
-              copy[loc].style[prop] = (copy[loc].style[eventinfo[3]]==true)?"bold":"normal";
+				copy[loc].style[eventinfo[3]] = !info[loc].style[eventinfo[3]];
+				copy[loc].style[prop] = (copy[loc].style[eventinfo[3]]==true)?"bold":"normal";
             }
             else if(type=="checkbox" && eventinfo[3]=="isItalic")
             {
-              copy[loc].style[eventinfo[3]] = !info[loc].style[eventinfo[3]];
-              copy[loc].style[prop] = (copy[loc].style[eventinfo[3]]==true)?"italic":"normal";
+				copy[loc].style[eventinfo[3]] = !info[loc].style[eventinfo[3]];
+				copy[loc].style[prop] = (copy[loc].style[eventinfo[3]]==true)?"italic":"normal";
             }
             else if(prop=="shadowBlur")
             {
-              copy[loc].style.shadowBlur = value+"px";
-              copy[loc].style.textShadow = "0px 0px "+value+"px "+copy[loc].style.shadowColor;
+				copy[loc].style.shadowBlur = value+"px";
+				copy[loc].style.textShadow = "0px 0px "+value+"px "+copy[loc].style.shadowColor;
             }
             else if(prop=="shadowColor")
             {
-              copy[loc].style.shadowColor = value;
-              copy[loc].style.textShadow = "0px 0px "+copy[loc].style.shadowBlur+" "+value;
+				copy[loc].style.shadowColor = value;
+				copy[loc].style.textShadow = "0px 0px "+copy[loc].style.shadowBlur+" "+value;
             }
             else 
-              copy[loc].style[prop] = value;
+              	copy[loc].style[prop] = value;
             setInfo(copy);
         }
     }
 
-  function handleMemeData(event)
-  {
-      const {name, value} = event.target;
-      if(name=="image")
-      {
-        setMemeData({
-          ...memeData,
-          [name] : [value]
-        })
-      }
-      else
-      {
-        setMemeData({
-          ...memeData,
-          [name] : [value]+"px"
-        })
-      }
-  }
+	// This state function updates and handles the meme-image parts. 
+	function handleMemeData(event)
+	{
+      	const {name, value} = event.target;
+      	if(name=="image")
+      	{
+			setMemeData({
+			...memeData,
+			[name] : [value]
+			})
+      	}
+		else
+		{
+			setMemeData({
+			...memeData,
+			[name] : [value]+"px"
+			})
+		}
+ 	 }
 
-  function addMore()
-  {
-    const obj =
-    {
-        id: 0,
-        content: "",
-        style: 
-        {
-            fontSize: "20px",
-            fontStyle: "",
-            color: "black",
-            top: "0px",
-            left: "0px",
-            fontWeight: "normal",
-            isBold: false,
-            isItalic: false,
-            width: "auto",
-            textAlign: "left",
-            textShadow: "none",
-            shadowColor: "black",
-            shadowBlur: "0px"
-        }
-    }
-    obj.id = info.length;
-	const copy = [...info];
-	copy.push(obj);
-	setInfo(copy)
-  }
+  	// This function adds more form boxes.
+	function addMore()
+	{
+		const obj =
+		{
+			id: 0,
+			content: "",
+			style: 
+			{
+				fontSize: "20px",
+				fontStyle: "",
+				color: "black",
+				top: "0px",
+				left: "0px",
+				fontWeight: "normal",
+				isBold: false,
+				isItalic: false,
+				width: "auto",
+				textAlign: "left",
+				textShadow: "none",
+				shadowColor: "black",
+				shadowBlur: "0px",
+				letterSpacing: "0px",
+				opacity: 1
+        	}
+    	}
+		obj.id = info.length;
+		const copy = [...info];
+		copy.push(obj);
+		setInfo(copy)
+  	}
 
-  function handleDelete(id)
-  {
-    if(id==info.length-1)
-    {
-      const copy = [...info];
-      copy.splice(id,1);
-      setInfo(copy);
-    }
-    else
-      alert("Removing boxes from between not allowed.");
-  }
+  	//This function handles the delete change.
+  	function handleDelete(id)
+  	{
+		if(id==info.length-1)
+		{
+			const copy = [...info];
+			copy.splice(id,1);
+			setInfo(copy);
+    	}
+    	else
+      	alert("Removing boxes from between not allowed.");
+  	}
 
-  function downloadImage(data, filename='untitled.jpeg'){
-	var a = document.createElement('a');
-	a.href = data;
-	a.download = filename;
-	a.click();
-  }
-  const download = () => {
-	html2canvas(document.querySelector('#meme-image-id'),{allowTaint: true, useCORS: true}).then(canvas => {
+  	//This is html2canvas code. Used for snapping the div box.
+  	function downloadImage(data, filename='untitled.jpeg')
+	{
+		var a = document.createElement('a');
+		a.href = data;
+		a.download = filename;
+		a.click();
+  	}
+  	const download = () => {
+		html2canvas(document.querySelector('#meme-image-id'),{allowTaint: true, useCORS: true}).then(canvas => {
 		var dataURL = canvas.toDataURL("image/jpeg", 1.0);
 		downloadImage(dataURL, 'my-canvas.jpeg');
+	})}
+
+	//to reference the content and the styles of the text on the image.
+	const styles={height: memeData.height, width: memeData.width};
+
+	//Mapping paras with respect to the number of the form boxes.
+	const paraEle = info.map(item=>{
+		return item.content && <p style={item.style}>{item.content}</p>
 	})
-  }
 
-  const styles={height: memeData.height, width: memeData.width};
-
-  const paraEle = info.map(item=>{
-      return item.content && <p style={item.style}>{item.content}</p>
-  })
-
-  return (
-    <div className="App">
-      <Navbar/>
-      <div className="AppContainer">
-        <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore} handleDelete={handleDelete} getRandomMemeImage = {getRandomMemeImage} memeInfo={memeData}/>
-        <div className="meme-display-container" id="meme-display-id">
-          <div className="meme-image" id="meme-image-id">
-            {paraEle}
-            <img id="meme-image-img"style={styles} src={memeData.image}/>
-          </div>
-        </div>
-      </div>
-	  <div className="downloadButton">
-		<button onClick={download}>Click here to download</button>
-	  </div>
-	  <Footer/>
-    </div>
-  );
+	//Printing section.
+	return (
+		<div className="App">
+		<Navbar/>
+		<div className="AppContainer">
+			<FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore} handleDelete={handleDelete} getRandomMemeImage = {getRandomMemeImage} memeInfo={memeData}/>
+			<div className="meme-display-container" id="meme-display-id">
+			<div className="meme-image" id="meme-image-id">
+				{paraEle}
+				<img id="meme-image-img"style={styles} src={memeData.image}/>
+			</div>
+			</div>
+		</div>
+		<div className="downloadButton">
+			<button onClick={download}>Click here to download</button>
+		</div>
+		<Footer/>
+		</div>
+	);
 }
 
 export default App;
