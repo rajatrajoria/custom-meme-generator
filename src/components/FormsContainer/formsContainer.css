@@ -48,21 +48,47 @@
     border: 1px solid black;
 }
 
+.meme-links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
 
 .meme-image-link{
-    display: flex;
-    /****/ flex-direction: column;
+    flex-direction: column;
     align-items: center;
 }
 
 .meme-image-link-url{
-    width: 85%;
-    padding: 10px;
+    /* padding: 10px; */
     text-align: center;
 }
 
+.getRandomImage{
+    margin-right: 5px;
+    font-size: 16px;
+    padding: 10px;
+    background-color: rgba(69, 68, 68, 0.212);
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    border: none;
+    font-family: 'Lekton', sans-serif;
+    border: 1px solid gray;
+}
+
+.getRandomImage:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.514);
+    color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
 .meme-image-link input{
-    width: 55%;
+    width: 85%;
     padding: 10px;
     text-align: center;
 }
@@ -94,7 +120,7 @@
         justify-content: center;
         gap: 10px;
         width: min-content;
-        margin: 10px 0px 5px 0px;
+        margin: 10px 0px 5px 5px;
         padding-bottom: 20px;
         margin-bottom: 20px;
     }
@@ -106,19 +132,32 @@
         flex-wrap: nowrap;
         overflow-x: auto;
         min-width: 97.5vw;
-        /* width: 97.5vw;; */
-        /* border: 1px solid rgb(255, 0, 0); */
         box-sizing: border-box;
         margin: 0px;
     }
+
+    .getRandomImage{
+        margin-right: 10px;
+        font-size: 16px;
+        padding: 10px;
+        background-color: rgba(69, 68, 68, 0.212);
+        color: rgb(0, 0, 0);
+        border-radius: 20px;
+        border: none;
+        font-family: 'Lekton', sans-serif;
+        border: 1px solid gray;
+    }
+
+    .getRandomImage:hover{
+        cursor: pointer;
+    }
+
     .meme-image-link{
-        display: flex;
         align-items: center;
         justify-content: center;
     }
     .meme-image-link-url{
         width: 100%;
-        padding: 10px;
         text-align: center;
     }
     

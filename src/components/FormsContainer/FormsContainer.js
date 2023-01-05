@@ -25,14 +25,18 @@ export default function FormsContainer(props)
             </div>
 
             <div className="meme-image-link">
-                <div className="meme-image-link-url">
-                    <input 
-                        type="text" 
-                        placeholder="Enter Meme image URL here" 
-                        name="image" 
-                        id="memeurl"
-                        onChange={props.handleMeme}
-                    />
+                <div className="meme-links">
+                    <div className="meme-image-link-url">
+                        <input 
+                            type="text" 
+                            placeholder="Meme image URL" 
+                            name="image" 
+                            id="memeurl"
+                            onChange={props.handleMeme}
+                        />
+                    </div>
+                    or
+                    <button className="getRandomImage">Random Meme</button>
                 </div>
                 <div className="meme-image-link-dimensions">
                     <label htmlFor="img-width">Width: </label>
