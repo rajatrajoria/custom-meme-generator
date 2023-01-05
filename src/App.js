@@ -5,6 +5,7 @@ import meme from "./meme"
 import Navbar from "./components/Navbar/Navbar"
 // import html2canvas from './html2canvas'
 import FormsContainer from './components/FormsContainer/FormsContainer';
+import html2canvas from "html2canvas";
 
 function App() 
 {
@@ -115,6 +116,19 @@ function App()
       alert("Removing boxes from between not allowed.");
   }
 
+  function downloadImage(data, filename='untitled.jpeg'){
+	var a = document.createElement('a');
+	a.href = data;
+	a.download = filename;
+	a.click();
+  }
+  const download = () => {
+	html2canvas(document.querySelector('#meme-image-id'),{allowTaint: true, useCORS: true}).then(canvas => {
+		var dataURL = canvas.toDataURL("image/jpeg", 1.0);
+		downloadImage(dataURL, 'my-canvas.jpeg');
+	})
+  }
+
   const styles={height: memeData.height, width: memeData.width};
 
   const paraEle = info.map(item=>{
@@ -126,13 +140,16 @@ function App()
       <Navbar/>
       <div className="AppContainer">
         <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore} handleDelete={handleDelete}/>
-        <div className="meme-display-container">
+        <div className="meme-display-container" id="meme-display-id">
           <div className="meme-image" id="meme-image-id">
             {paraEle}
-            <img style={styles} src={memeData.image}/>
+            <img id="meme-image-img"style={styles} src={memeData.image}/>
           </div>
         </div>
       </div>
+	  <div className="downloadButton">
+		<button onClick={download}>Click here to download</button>
+	  </div>
     </div>
   );
 }
