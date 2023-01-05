@@ -101,7 +101,18 @@ function App()
 	const copy = [...info];
 	copy.push(obj);
 	setInfo(copy)
-	console.log(info);
+  }
+
+  function handleDelete(id)
+  {
+    if(id==info.length-1)
+    {
+      const copy = [...info];
+      copy.splice(id,1);
+      setInfo(copy);
+    }
+    else
+      alert("Removing boxes from between not allowed.");
   }
 
   const styles={height: memeData.height, width: memeData.width};
@@ -114,7 +125,7 @@ function App()
     <div className="App">
       <Navbar/>
       <div className="AppContainer">
-        <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore}/>
+        <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore} handleDelete={handleDelete}/>
         <div className="meme-display-container">
           <div className="meme-image" id="meme-image-id">
             {paraEle}

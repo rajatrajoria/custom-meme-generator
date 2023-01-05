@@ -6,7 +6,7 @@ export default function FormsContainer(props)
 {
 
     const formEle = props.info.map(item=>{
-        return <Form info={props.info} handle={props.handle} id={item.id}/>
+        return <Form info={props.info} handle={props.handle} id={item.id} handleDelete={props.handleDelete}/>
     })
 
     function addMoreBoxes(){
@@ -26,7 +26,6 @@ export default function FormsContainer(props)
 
             <div className="meme-image-link">
                 <div className="meme-image-link-url">
-                    {/* <label htmlFor="memeurl">URL: </label> */}
                     <input 
                         type="text" 
                         placeholder="Enter Meme image URL here" 

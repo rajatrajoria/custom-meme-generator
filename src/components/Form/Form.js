@@ -9,6 +9,10 @@ export default function Input(props)
         props.handle(event.target.name, event.target.value, event.target.type);
     }
 
+    function del(event){
+        props.handleDelete(event.target.name);
+    }
+
     return(
         <div className="design-container">
             <form>
@@ -156,7 +160,9 @@ export default function Input(props)
                     />
 
                     <label htmlFor={props.id+"shadowColor"}> Blur Color : </label>
-                    <input type="color" id={props.id+"shadowColor"} className="shadowcolor-input" name={props.id+" style shadowColor"} value={props.info[props.id].style.shadowColor} onChange={handleChange}></input>
+                    <input type="color" id={props.id+"shadowColor"} className="shadowcolor-input" name={props.id+" style shadowColor"} value={props.info[props.id].style.shadowColor} onChange={handleChange}></input><br/>
+
+                    <button type="button" name={props.id} onClick={del}>Delete</button>
                 </fieldset>
             </form>
         </div>
