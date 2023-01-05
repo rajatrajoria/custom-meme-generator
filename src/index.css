@@ -7,4 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   box-sizing: border-box;
+  background-color: rgba(153, 153, 55, 0.247);
+}
+
+html{
+  padding: 0;
+  margin: 0;
 }

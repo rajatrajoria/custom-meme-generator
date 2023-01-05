@@ -15,15 +15,18 @@ export default function FormsContainer(props)
 
     return(
         <div className="forms-container">
+
             <div className="text-designer">
                 {formEle}
             </div>
+
             <div className="addMoreFormButton">
                 <button onClick={addMoreBoxes}>Add Box</button>
             </div>
+
             <div className="meme-image-link">
                 <div className="meme-image-link-url">
-                    <label htmlFor="memeurl">URL: </label>
+                    {/* <label htmlFor="memeurl">URL: </label> */}
                     <input 
                         type="text" 
                         placeholder="Enter Meme image URL here" 
@@ -33,21 +36,21 @@ export default function FormsContainer(props)
                     />
                 </div>
                 <div className="meme-image-link-dimensions">
-                    <label htmlFor="img-width">Image Width: </label>
+                    <label htmlFor="img-width">Width: </label>
                     <input 
                         type="number" 
                         placeholder="Width" 
                         name="width" 
-                        defaultValue={500}
+                        defaultValue={375}
                         min={5}
                         onChange={props.handleMeme}
                         id="img-width"
                     />
-                    <label htmlFor="img-height">Image Height: </label>
+                    <label htmlFor="img-height">Height: </label>
                     <input 
                         type="number" 
                         placeholder="Height" 
-                        name="height" 
+                        name="height"
                         defaultValue={300}
                         min={5}
                         onChange={props.handleMeme}

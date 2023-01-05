@@ -1,21 +1,23 @@
 .design-container{
-    /* border: 1px solid rgb(44, 46, 46); */
     padding: 5px 0px 5px 10px;
     margin: 10px 10px 10px 10px;
+    width: max-content;
 }
 
 fieldset{
     border: 1px solid rgb(85, 84, 84);
+    background-color: rgb(255, 237, 213);
 }
 
 legend {
-    background-color: gray;
+    background-color: rgb(0, 0, 0);
     color: white;
     padding: 5px 10px;
   }
 
 form{
-    width: 375px;
+    min-width: 375px;
+    width: 29.5vw;
 }
 
 .text-input{
@@ -32,6 +34,13 @@ form{
 
 .font-color-input{
     margin-top: 5px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.tblr-input{
+    width: 30px;
+    text-align: center;
     margin-right: 20px;
     margin-bottom: 5px;
 }
@@ -65,5 +74,92 @@ label{
 
 .font-family-input{
     text-align: left;
-    width: 90px
+    width: 90px;
+}
+
+
+
+@media screen and (max-width: 1200px) 
+{
+    .design-container{
+        padding: 0px;
+        margin: 0px;
+        width: max-content;
+    }
+    
+    fieldset{
+        border: 1px solid rgb(85, 84, 84);
+    }
+    
+    legend {
+        background-color: rgb(0, 0, 0);
+        color: white;
+        padding: 5px 10px;
+      }
+    
+    form{
+        max-width: 300px;
+        width: 29.5vw;
+        margin-bottom: 5px;
+    }
+    
+    .text-input{
+        margin-left: 10px;
+        margin-bottom: 5px;
+    }
+    
+    .font-size-input{
+        width: 30px;
+        text-align: center;
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+
+    .font-family-input{
+        text-align: left;
+        width: 90px;
+    }
+    
+    .font-color-input{
+        margin-top: 5px;
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+    
+    .tblr-input{
+        width: 30px;
+        text-align: center;
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+
+    .tblr-input-width{
+        width: 30px;
+        text-align: center;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+    
+    .input-type-checkbox{
+        margin-bottom: 5px;
+    }
+    
+    #boldlabel{
+        margin-right: 20px;
+    }
+    
+    .shadowblur-input{
+        width: 30px;
+        text-align: center;
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+    
+    label{
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        cursor: pointer;
+    }
+    
+    
+    
 }

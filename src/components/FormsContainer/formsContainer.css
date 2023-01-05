@@ -3,14 +3,23 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
+    width: min-content;
+    margin: 10px;
     padding-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 15px black;
 }
 .text-designer{
     display: flex;
-    /****/flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row;
     flex-wrap: nowrap;
+    overflow-y: auto;
     overflow-x: auto;
-    width: auto;
+    width: 33.2vw;
+    min-width: 410px;
+    margin: 10px 10px 10px 10px;
 }
 
 .text-designer::-webkit-scrollbar {
@@ -19,23 +28,35 @@
 
 .addMoreFormButton{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 5px;
 }
 .addMoreFormButton > button{
-    padding: 15px;
+    padding: 10px;
     font-size: 16px;
+    background-color: rgba(69, 68, 68, 0.212);
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    border: none;
+    font-family: 'Lekton', sans-serif;
+    border: 1px solid gray;
+}
+.addMoreFormButton > button:hover{
+    background-color: rgba(0, 0, 0, 0.514);
+    color: rgb(255, 255, 255);
+    border: 1px solid black;
 }
 
 
 .meme-image-link{
     display: flex;
+    /****/ flex-direction: column;
     align-items: center;
 }
 
 .meme-image-link-url{
-    width: 55%;
+    width: 85%;
     padding: 10px;
     text-align: center;
 }
@@ -49,6 +70,8 @@
 .meme-image-link-dimensions{
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-top: 5px;
 }
 
 #img-width{
@@ -61,4 +84,54 @@
     width: 5%;
     min-width: 40px;
     margin-left: 5px;
+}
+
+@media screen and (max-width: 1200px) 
+{
+    .forms-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        width: min-content;
+        margin: 10px 0px 5px 0px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .text-designer{
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        min-width: 97.5vw;
+        /* width: 97.5vw;; */
+        /* border: 1px solid rgb(255, 0, 0); */
+        box-sizing: border-box;
+        margin: 0px;
+    }
+    .meme-image-link{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .meme-image-link-url{
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .meme-image-link input{
+        width: 80%;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .meme-image-link-dimensions{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0px;
+    }
 }

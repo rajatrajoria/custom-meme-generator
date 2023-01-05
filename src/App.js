@@ -2,6 +2,7 @@ import React from "react"
 import './App.css';
 import formInfo from './formInfo'
 import meme from "./meme"
+import Navbar from "./components/Navbar/Navbar"
 // import html2canvas from './html2canvas'
 import FormsContainer from './components/FormsContainer/FormsContainer';
 
@@ -111,14 +112,14 @@ function App()
 
   return (
     <div className="App">
-		  <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore}/>
-      <hr/>
-      <div className="meme-display-container">
-        <div className="meme-image" id="meme-image-id">
-          {paraEle}
-          <img style={styles} src={memeData.image}/>
-        </div>
-        <div id="meme-save-button">
+      <Navbar/>
+      <div className="AppContainer">
+        <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore}/>
+        <div className="meme-display-container">
+          <div className="meme-image" id="meme-image-id">
+            {paraEle}
+            <img style={styles} src={memeData.image}/>
+          </div>
         </div>
       </div>
     </div>
