@@ -57,13 +57,14 @@ export default function Input(props)
                         <option value="">--Choose--</option>
                         <option value="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" style={{fontFamily: "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"}}>Impact</option>
                         <option value="Arial, Helvetica, sans-serif" style={{fontFamily: "Arial, Helvetica, sans-serif"}}>Arial</option>
-                        <option value="'Indie Flower', cursive;" style={{fontFamily: "'Indie Flower', cursive"}}>Indie Flower</option>
+                        <option value="'Indie Flower', cursive" style={{fontFamily: "'Indie Flower', cursive"}}>Indie Flower</option>
+                        <option value="'Rubik Bubbles', cursive" style={{fontFamily: "'Rubik Bubbles', cursive"}}>Rubik</option>
                         <option value="'Times New Roman', Times, serif" style={{fontFamily: "'Times New Roman', Times, serif"}}>Times New Roman</option>
-                        <option value="Courier New', Courier, monospace" style={{fontFamily: "Courier New', Courier, monospace"}}>Courier New</option>
-                        <option value="Courier, monospace" style={{fontFamily: "Courier, monospace"}}>Courier</option>
+                        <option value="'Courier New', Courier, monospace" style={{fontFamily: "'Courier New', Courier, monospace"}}>Courier New</option>
+                        <option value="cursive" style={{fontFamily: "cursive"}}>Cursive</option>
                         <option value="Verdana, Geneva, Tahoma, sans-serif" style={{fontFamily: "Verdana, Geneva, Tahoma, sans-serif"}}>Verdana</option>
                         <option value="Georgia, 'Times New Roman', Times, serif" style={{fontFamily: "Georgia, 'Times New Roman', Times, serif"}}>Georgia</option>
-                        <option value="'Archivo Black', sans-serif;" style={{fontFamily: "'Archivo Black', sans-serif"}}>Archivo Black</option>
+                        <option value="'Archivo Black', sans-serif" style={{fontFamily: "'Archivo Black', sans-serif"}}>Archivo Black</option>
                         <option value="'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" style={{fontFamily: "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"}}>Trebuchlet MS</option>
                         <option value="'Lekton', sans-serif" style={{fontFamily: "'Lekton', sans-serif"}}>Lekton</option>
                         <option value="'Poppins', sans-serif" style={{fontFamily: "'Poppins', sans-serif"}}>Poppins</option>

@@ -26,10 +26,17 @@ nav h1{
 
 @media screen and (max-width: 741px) {
     nav h1{
-        font-size: 30px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 35px;
+        letter-spacing: 1px;
+        word-spacing: 0px;
     }
     span{
         font-size: 30px;
+        margin: 0px 10px;
     }
     
 }

@@ -5,7 +5,7 @@ export default function Navbar(){
     return(
         <nav>
             <span> 🤣 </span>
-            <h1>Meme Generator</h1>
+            <h1>Custom Meme Generator</h1>
             <span> 🤣 </span>
         </nav>
     );
