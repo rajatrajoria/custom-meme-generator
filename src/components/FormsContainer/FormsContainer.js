@@ -35,8 +35,8 @@ export default function FormsContainer(props)
                             onChange={props.handleMeme}
                         />
                     </div>
-                    or
-                    <button className="getRandomImage">Random Meme</button>
+                    <span style={{fontStyle:"bold", fontSize: "20px"}}>or</span>
+                    <button className="getRandomImage" onClick={props.getRandomMemeImage}>Random Meme</button>
                 </div>
                 <div className="meme-image-link-dimensions">
                     <label htmlFor="img-width">Width: </label>

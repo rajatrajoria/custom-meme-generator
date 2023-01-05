@@ -12,7 +12,24 @@ function App()
   //State info is used to track down the different input boxes and its data.
   //State memeData is used for the image counterparts. Its dimensions as well.
   const [info, setInfo] = React.useState(formInfo);
-  const [memeData, setMemeData] = React.useState(meme);  
+  const [memeData, setMemeData] = React.useState(meme);
+
+  const [allMemeData, setAllMemeData] = React.useState([]);  
+  React.useEffect(()=>{
+  	fetch("https://api.imgflip.com/get_memes")
+    	.then(res => res.json())
+        .then(data => setAllMemeData(data.data.memes))
+  },[])
+
+  function getRandomMemeImage() {
+	const randomNumber = Math.floor(Math.random() * allMemeData.length)
+	const url = allMemeData[randomNumber].url
+	console.log(url);
+	setMemeData(prevMeme => ({
+		...prevMeme,
+		image: url
+	}))
+}
 
   function handleChange(name, value, type)
     {
@@ -27,7 +44,7 @@ function App()
         else
         {
             let loc = eventinfo[0], prop = eventinfo[2];
-
+            // console.log(name,value,type);
             if(type=="number" && prop!="shadowBlur" && prop!="shadowBlur")
               copy[loc].style[prop] = value + "px";
             else if(type=="checkbox" && eventinfo[3]=="isBold")
@@ -123,7 +140,7 @@ function App()
 	a.click();
   }
   const download = () => {
-	html2canvas(document.querySelector('#meme-display-id'),{allowTaint: true, useCORS: true}).then(canvas => {
+	html2canvas(document.querySelector('#meme-image-id'),{allowTaint: true, useCORS: true}).then(canvas => {
 		var dataURL = canvas.toDataURL("image/jpeg", 1.0);
 		downloadImage(dataURL, 'my-canvas.jpeg');
 	})
@@ -139,7 +156,7 @@ function App()
     <div className="App">
       <Navbar/>
       <div className="AppContainer">
-        <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore} handleDelete={handleDelete}/>
+        <FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore} handleDelete={handleDelete} getRandomMemeImage = {getRandomMemeImage} memeInfo={memeData}/>
         <div className="meme-display-container" id="meme-display-id">
           <div className="meme-image" id="meme-image-id">
             {paraEle}

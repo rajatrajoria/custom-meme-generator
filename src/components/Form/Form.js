@@ -145,6 +145,11 @@ export default function Input(props)
                     />
                     <label htmlFor={props.id + "isItalic"} id="italiclabel" style={{fontStyle: "italic"}}>Italic</label><br/>
 
+                    {/* <div className="slidecontainer">
+                        <label htmlFor={props.id+"opacity"}>Opacity :</label>
+                        <input type="range" onChange={handleChange} classname="opacity-slider" min="0" max="1" name={props.id+" style opacity"} value="1" class="slider" id={props.id+"opacity"}></input><br/>
+                    </div> */}
+
                     {/* Text Shadow Color and Text Shadow Blur Radius ==> Text Shadow*/}
                     <label htmlFor={props.id+"shadowBlur"}> Blur Rad : </label>
                     <input
