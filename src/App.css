@@ -42,6 +42,7 @@ p{
     background-color: rgb(232, 168, 17);
     font-family: 'Lekton', sans-serif;
     border-radius: 20px;
+    margin-bottom: 10px;
 }
 .downloadButton > button:hover{
     cursor: pointer;

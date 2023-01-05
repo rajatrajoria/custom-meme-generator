@@ -3,7 +3,7 @@ import './App.css';
 import formInfo from './formInfo'
 import meme from "./meme"
 import Navbar from "./components/Navbar/Navbar"
-// import html2canvas from './html2canvas'
+import Footer from "./components/Footer/Footer"
 import FormsContainer from './components/FormsContainer/FormsContainer';
 import html2canvas from "html2canvas";
 
@@ -123,7 +123,7 @@ function App()
 	a.click();
   }
   const download = () => {
-	html2canvas(document.querySelector('#meme-image-id'),{allowTaint: true, useCORS: true}).then(canvas => {
+	html2canvas(document.querySelector('#meme-display-id'),{allowTaint: true, useCORS: true}).then(canvas => {
 		var dataURL = canvas.toDataURL("image/jpeg", 1.0);
 		downloadImage(dataURL, 'my-canvas.jpeg');
 	})
@@ -150,6 +150,7 @@ function App()
 	  <div className="downloadButton">
 		<button onClick={download}>Click here to download</button>
 	  </div>
+	  <Footer/>
     </div>
   );
 }
