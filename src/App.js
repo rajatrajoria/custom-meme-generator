@@ -101,6 +101,8 @@ function App()
   	// This function adds more form boxes.
 	function addMore()
 	{
+		if(info.length==1)
+			alert("Swipe/Scroll horizontally to navigate through different boxes.")
 		const obj =
 		{
 			id: 0,
