@@ -17,7 +17,7 @@ export default function Input(props)
     return(
         <div className="design-container">
             <form>
-                <fieldset><legend>Box {props.id+1}</legend>
+                <fieldset><legend>Box {props.id+1} - Draggable</legend>
 
                     {/* Text Box input */}
                     <label htmlFor={props.id+"content"}>Enter text {props.id+1} : </label>
