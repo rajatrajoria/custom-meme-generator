@@ -26,6 +26,7 @@ export default function Input(props)
                         className="text-input"
                         placeholder={"Text #"+parseInt(props.id+1)}
                         name={props.id+" content"}
+                        autoComplete="off"
                         onChange={handleChange}
                         value={props.info[props.id].content}
                         id={props.id+"content"}

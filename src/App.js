@@ -6,6 +6,9 @@ import Navbar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer"
 import FormsContainer from './components/FormsContainer/FormsContainer';
 import html2canvas from "html2canvas";
+import { collection, addDoc } from "firebase/firestore";
+import {db} from './firebase';
+import axios from "axios";
 
 function App() 
 {
@@ -13,6 +16,14 @@ function App()
 	//State memeData is used for the image information along with its dimension as well.
 	const [info, setInfo] = React.useState(formInfo);
 	const [memeData, setMemeData] = React.useState(meme);
+	const [userData, setUserData] = React.useState(null);
+	const getData = async () => {
+		const res = await axios.get('https://geolocation-db.com/json/')
+		setUserData({"IP": res.data.IPv4, "City": res.data.city, "State": res.data.state, "Country": res.data.country_name});
+	}
+	React.useEffect( () => {
+		getData();
+	}, []);
 
 	//The allMemeData fetches and tracks the data receieved and stores it for further processing. useEffect is used to prevent React falling to the trap of the 'Out'side problems. ==> Infinte loop problem. 
 	const [allMemeData, setAllMemeData] = React.useState([]);  
@@ -152,11 +163,21 @@ function App()
   	}
 
   	//This is html2canvas code. Used for snapping the div box.
-  	function downloadImage(data, filename='untitled.jpeg')
+  	function downloadImage(data, filename='meme.jpeg')
 	{
 		var a = document.createElement('a');
 		a.href = data;
 		a.download = filename;
+		console.log(a);
+		try {
+            const docRef = addDoc(collection(db, "memes"), {
+              URL: data,  
+			  details: userData,
+			  time: new Date()  
+            });
+          } catch (e) {
+            console.error("Error uploading ", e);
+        }
 		a.click();
   	}
   	const download = () => {

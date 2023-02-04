@@ -1,5 +1,5 @@
 export default{
-    image: "https://www.mememaker.net/static/images/memes/4343494.jpg",
+    image: "https://i.imgur.com/9onQznZ.jpg",
     width: "375px",
     height: "400px"
 }
