@@ -34,7 +34,6 @@ function App()
 	//Most important function of the entire code. It handles the entire input and its associated fields. There are plenty of ifs and else's solely depending on the input types and props recieved form the lower components. 
 	function handleChange(name, value, type)
     {
-        console.log(name,value,type);
         let eventinfo = name.split(' ');
         var copy = JSON.parse(JSON.stringify(info));
         if(eventinfo.length==2)
@@ -89,6 +88,13 @@ function App()
 			[name] : [value]
 			})
       	}
+		else if(name=="imageUpload")
+		{	
+			setMemeData({
+				...memeData,
+				image : URL.createObjectURL(event.target.files[0])
+			})
+		}
 		else
 		{
 			setMemeData({

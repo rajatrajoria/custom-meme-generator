@@ -27,7 +27,7 @@ export default function FormsContainer(props)
             <div className="addMoreFormButton">
                 <button onClick={addMoreBoxes}>Add Box</button>
             </div>
-
+            <div style={{borderBottom: "1px dotted black"}}></div>
             {/* Taking the URL of the image concerned - Both random and the imported URL. */}
             <div className="meme-image-link">
                 <div className="meme-links">
@@ -43,6 +43,12 @@ export default function FormsContainer(props)
                     <span style={{fontStyle:"bold", fontSize: "20px"}}>or</span>
                     <button className="getRandomImage" onClick={props.getRandomMemeImage}>Random Meme</button>
                 </div>
+                <div className="uploadButtonContainer">
+                    <span style={{fontStyle:"bold", fontSize: "20px"}}>or</span>
+                    <input className="uploadButton" type="file" name="imageUpload" onChange={props.handleMeme} accept="image/jpeg, image/png, image/jpg"></input>
+                </div>
+
+                <div style={{borderBottom: "1px dotted black"}}></div>
 
             {/* The dimensions of the image uploaded. */}
                 <div className="meme-image-link-dimensions">
@@ -61,7 +67,7 @@ export default function FormsContainer(props)
                         type="number" 
                         placeholder="Height" 
                         name="height"
-                        defaultValue={300}
+                        defaultValue={400}
                         min={5}
                         onChange={props.handleMeme}
                         id="img-height"
