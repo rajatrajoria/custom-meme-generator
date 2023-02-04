@@ -9,6 +9,7 @@ import html2canvas from "html2canvas";
 import { collection, addDoc } from "firebase/firestore";
 import {db} from './firebase';
 import axios from "axios";
+import Draggable, {DraggableCore} from 'react-draggable';
 
 function App() 
 {
@@ -191,7 +192,7 @@ function App()
 
 	//Mapping paras with respect to the number of the form boxes.
 	const paraEle = info.map(item=>{
-		return item.content && <p id={"p"+item.id} style={item.style}>{item.content}</p>
+		return item.content && <Draggable><p id={"p"+item.id} style={item.style}>{item.content}</p></Draggable>
 	})
 
 	//Printing section.

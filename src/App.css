@@ -20,9 +20,10 @@ p{
 .meme-image > p{
     position: absolute;
     line-height: 1;
+    cursor:grabbing;
 }
 .meme-image > p:hover{
-    border: 1px solid rgb(76, 0, 255);
+    border: 1px solid rgb(179, 147, 255);
 }
 
 .AppContainer{
