@@ -191,7 +191,7 @@ function App()
 
 	//Mapping paras with respect to the number of the form boxes.
 	const paraEle = info.map(item=>{
-		return item.content && <p style={item.style}>{item.content}</p>
+		return item.content && <p id={"p"+item.id} style={item.style}>{item.content}</p>
 	})
 
 	//Printing section.
@@ -201,10 +201,10 @@ function App()
 		<div className="AppContainer">
 			<FormsContainer id="formsContainer" info={info} handle={handleChange} handleMeme={handleMemeData} addMore={addMore} handleDelete={handleDelete} getRandomMemeImage = {getRandomMemeImage} memeInfo={memeData}/>
 			<div className="meme-display-container" id="meme-display-id">
-			<div className="meme-image" id="meme-image-id">
-				{paraEle}
-				<img id="meme-image-img"style={styles} src={memeData.image}/>
-			</div>
+				<div className="meme-image" id="meme-image-id">
+					{paraEle}
+					<img id="meme-image-img"style={styles} src={memeData.image}/>
+				</div>
 			</div>
 		</div>
 		<div className="downloadButton">
