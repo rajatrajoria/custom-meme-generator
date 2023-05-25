@@ -9,6 +9,7 @@ This project is built upon React Js. It comes with plenty of features like:
   #### 6. Draggable components for easy use
   #### 7. Easy to use GUI
   #### 7. 100% Responsive - Works on almost all devices
+  #### 8. IP tracker embedded as well (just for fun lol ;) )
   
 <br>
 
